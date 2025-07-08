@@ -1,37 +1,46 @@
 # StellarSpeak_LLM_Astronomy
 
-#### 介绍
-我是星语者(StellarSpeak)，是中国科学院大学的星语调校局设计和训练的智能语言模型，专为天文学和科学领域提供语言支持。我的目标是帮助用户理解科学知识，提高对科学概念的掌握度。
+## 介绍
+StellarSpeak_LLM_Astronomy 是一个结合大型语言模型与天文学领域的项目，旨在为天文研究、数据解析和知识传播提供智能化解决方案。该项目利用先进的自然语言处理技术，为用户提供天文数据的智能解读、天文现象的预测与解释等功能。
 
-#### 软件架构
-软件架构说明
+## 软件架构
+本项目采用模块化设计，主要包含以下几个核心组件：
+- **数据采集模块**：负责从天文数据库、望远镜接口等获取原始数据。
+- **模型处理模块**：基于大型语言模型（LLM）对天文数据进行语义解析与推理。
+- **用户交互模块**：提供命令行界面（CLI）和图形用户界面（GUI）供用户操作。
+- **知识库模块**：集成天文学知识库，辅助模型进行更准确的推理与回答。
 
+## 安装教程
+1. 克隆仓库：
+   ```bash
+   git clone https://gitee.com/yourusername/StellarSpeak_LLM_Astronomy.git
+   ```
+2. 安装依赖：
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. 配置环境变量（如需访问API或数据库，请参考配置文档设置相关密钥和参数）。
 
-#### 安装教程
+4. 启动应用：
+   ```bash
+   python main.py
+   ```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 使用说明
+- **CLI 模式**：运行 `python cli.py`，输入天文相关问题即可获得模型的回答。
+- **GUI 模式**：运行 `python gui.py`，通过图形界面选择数据源或输入问题。
+- **数据导入**：支持导入 FITS、CSV 等格式的天文数据文件进行分析。
 
-#### 使用说明
+## 参与贡献
+欢迎贡献代码、文档或测试用例。请遵循以下步骤：
+1. Fork 仓库并创建新分支。
+2. 提交 Pull Request，并填写相关信息（参见 `.gitee/PULL_REQUEST_TEMPLATE.zh-CN.md`）。
+3. 等待审核与合并。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 特技
+- 支持多语言交互（中文、英文等）。
+- 内置天文事件提醒功能（如日食、流星雨等）。
+- 可扩展性强，支持接入第三方天文数据库和模型。
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 协议
+本项目采用 MIT License，请参见 LICENSE 文件。
