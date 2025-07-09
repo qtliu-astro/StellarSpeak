@@ -55,6 +55,8 @@ pip install -U torch torchvision torchaudio transformers accelerate protobuf==3.
 ```bash
 python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 ```
+![输入图片说明](figs%E6%88%AA%E5%B1%8F2025-07-09%2015.39.29.png)
+
 
 ---
 
@@ -66,6 +68,7 @@ python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 📁 所有语料已开源发布在：
 
 👉 https://huggingface.co/TQLLab/StellarSpeak_13B_LLM/tree/main/dataset
+![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.45.05.png)
 
 📄 数据格式为三元组结构：
 
@@ -84,6 +87,8 @@ python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 
 💡 **TIP：** 不同 Prompt 模板会导致微小性能差异，相关实验分析见：[Astro-QA](https://github.com/ACMISLab/Astro-QA)
 
+![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.46.25.png)
+![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.46.31.png)
 ---
 
 
@@ -167,6 +172,7 @@ python /home/jovyan/data/alpaca-lora-main/finetune.py \
 📦 模型仓库地址：
 
 👉 https://huggingface.co/TQLLab/StellarSpeak_13B_LLM
+![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.47.38.png)
 
 包含内容：
 
