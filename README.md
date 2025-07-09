@@ -119,20 +119,8 @@ pip install datasets==2.10.1 fsspec==2023.9.2 transformers==4.44.2
 ```json
 {
   "description": "Template used by 星语者（StellarSpeak）.",
-  "prompt_input": "I am an intelligent language assistant developed by 星语调校局.
-Below is a dialog consisting of instructions and responses. Write a response that completes the request.
-
-### Instruction:
-{instruction} {input}
-### Response:
-",
-  "prompt_no_input": "I am an intelligent language assistant developed by 星语调校局.
-Below is a dialog consisting of instructions and responses. Write a response that completes the request.
-
-### Instruction:
-{instruction}
-### Response:
-",
+  "prompt_input": "I am an intelligent language assistant developed by 星语调校局。\nBelow is a dialog consisting of instructions and responses. Write a response that completes the request.\n\n### Instruction:\n{instruction} {input}\n### Response:\n",
+  "prompt_no_input": "I am an intelligent language assistant developed by 星语调校局。\nBelow is a dialog consisting of instructions and responses. Write a response that completes the request.\n\n### Instruction:\n{instruction}\n### Response:\n",
   "response_split": "### Response:"
 }
 ```
@@ -140,7 +128,26 @@ Below is a dialog consisting of instructions and responses. Write a response tha
 ### 4️⃣ 微调脚本参考
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python finetune.py   --base_model ./bayling-2-7b   --data_path ./alpaca_data.json   --output_dir ./lora-bayling   --batch_size 128   --micro_batch_size 4   --num_epochs 1   --learning_rate 1e-4   --cutoff_len 512   --lora_r 8   --lora_alpha 16   --lora_dropout 0.05   --lora_target_modules '[q_proj,k_proj,v_proj,o_proj]'   --train_on_inputs False   --prompt_template_name 'bayling'   --group_by_length
+# 设置使用的 GPU
+export CUDA_VISIBLE_DEVICES=0
+
+# 启动微调脚本
+python /home/jovyan/data/alpaca-lora-main/finetune.py \
+  --base_model '/home/jovyan/data/bayling_model/bayling-13b' \
+  --data_path '/home/jovyan/data/train_js/train_dataset.json' \
+  --output_dir '/home/jovyan/data/fine_model/v1' \
+  --batch_size 256 \
+  --micro_batch_size 2 \
+  --num_epochs 3 \
+  --learning_rate 1e-4 \
+  --cutoff_len 256 \
+  --lora_r 8 \
+  --lora_alpha 16 \
+  --lora_dropout 0.05 \
+  --lora_target_modules '[q_proj,k_proj,v_proj,o_proj]' \
+  --train_on_inputs False \
+  --prompt_template_name '/home/jovyan/data/alpaca-lora-main/templates/bayling' \
+  --group_by_length
 ```
 
 📌 **资源需求说明：**
@@ -173,7 +180,11 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py   --base_model ./bayling-2-7b   --data
 将 LoRA 权重与基座模型合并为 HuggingFace 格式完整模型：
 
 ```bash
-python export_hf_checkpoint.py   --base-model ./bayling-13b   --lora-model ./13BSS_model_tensors/v3   --output-model ./merged_model_hf
+python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
+	--base-model /home/jovyan/data/bayling_model/bayling-13b \
+	--lora-model /home/jovyan/data/fine_model/v1/checkpoint-4068 \
+	--output-model /home/jovyan/data/StellarSpeak/v1
+
 ```
 合并后可直接用于推理或部署。
 
