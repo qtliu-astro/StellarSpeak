@@ -264,7 +264,7 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 
 ---
 
-### 📐 数学基础测试（图片待更新）
+### 📐 数学基础测试
 
 - 📌 **测试内容**：代数推导、单位换算、几何分析、公式应用  
 
