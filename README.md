@@ -245,9 +245,9 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 - 📌 测试目标：考察模型对恒星、系外行星、X 射线源等核心天文概念的掌握
 - 📂 数据来源：Astro-QA 数据集 + 人工构造问题
 - ✅ 评估方式：专家人工判分（优/中/差）
-- 🆚 对比结果（与 BayLing-27B）：
+- 🆚 对比结果（与 BayLing-7B）：
   - StellarSpeak-13B 在术语解释、结构表达方面更清晰；
-  - BayLing-27B 在超长生成上稍具流畅性
+  - BayLing-7B 在超长生成上稍具流畅性
 - 📝 结论：
   - StellarSpeak 更适用于科研问答场景，专业性强
 
@@ -259,7 +259,7 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 - 📂 测试方式：构造 10 道典型题目，格式类比 Vicuna
 - ✅ 表现分析：
   - StellarSpeak 能准确识别公式、完成单位转换
-  - 输出逻辑清晰，符号规范，优于 BayLing-27B
+  - 输出逻辑清晰，符号规范，优于 BayLing-7B
 - 📝 结论：
   - 微调显著增强模型对“格式化输出”与“数学表达”的掌控
 
