@@ -55,7 +55,7 @@ pip install -U torch torchvision torchaudio transformers accelerate protobuf==3.
 ```bash
 python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 ```
-![输入图片说明](figs%E6%88%AA%E5%B1%8F2025-07-09%2015.39.29.png)
+![输入图片说明](figs/1.png)
 
 
 ---
@@ -68,7 +68,7 @@ python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 📁 所有语料已开源发布在：
 
 👉 https://huggingface.co/TQLLab/StellarSpeak_13B_LLM/tree/main/dataset
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.45.05.png)
+![输入图片说明](figs/2.png)
 
 📄 数据格式为三元组结构：
 
@@ -87,8 +87,8 @@ python chat.py --model-path ./bayling-2-7b --style rich --load-8bit
 
 💡 **TIP：** 不同 Prompt 模板会导致微小性能差异，相关实验分析见：[Astro-QA](https://github.com/ACMISLab/Astro-QA)
 
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.46.25.png)
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.46.31.png)
+![输入图片说明](figs/3.png)
+![输入图片说明](figs/4.png)
 ---
 
 
@@ -172,7 +172,7 @@ python /home/jovyan/data/alpaca-lora-main/finetune.py \
 📦 模型仓库地址：
 
 👉 https://huggingface.co/TQLLab/StellarSpeak_13B_LLM
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2016.47.38.png)
+![输入图片说明](figs/5.png)
 
 包含内容：
 
@@ -200,8 +200,8 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 
 我们从**自我认知能力**、**通用任务表现**、**天文知识理解**与**数学基础计算**四个维度，对星语者（StellarSpeak）-13B 模型进行了系统测试，基准对比对象为其基座模型 **BayLing-13B** 及 BayLing-7B（仅天文与数学任务）。
 
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.19.27.png)
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.21.24.png)
+![输入图片说明](figs/6.png)
+![输入图片说明](figs/7.png)
 ---
 
 ### 🧠 自我认知测试
@@ -210,9 +210,9 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 - 📂 数据文件：`person_output.json`  
 - ✅ 星语者-13B 表现：
   - 中文问题准确率：**100%**（均回答“星语者”或“StellarSpeak”）
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.22.15.png)
+![输入图片说明](figs/8.png)
   - 英文问题准确率：**0%**（错误认为自己是 “BayLing-13B”）
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.22.22.png)
+![输入图片说明](figs/9.png)
 - 📝 结论：
   - 星语者-13B 自我认知训练语料以中文为主，未覆盖英文场景
   - 英文回答倾向于继承 BayLing 原始输出，反映未完成指令覆盖
@@ -227,11 +227,11 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 - 📄 示例题目：
   - “Python 和 JavaScript 编程语言之间的主要区别是什么？”
   - “我在家工作时如何提高生产力？”
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.36.16.png)
+![输入图片说明](figs/10.png)
   - “植物蛋白和动物蛋白来源之间有什么区别？”
   - “政府如何利用财政和货币政策来应对经济衰退？”
 - 📂 数据格式：`score.json`（包含 output1 = BayLing，output2 = StellarSpeak，win 标签）
-![输入图片说明](%E6%88%AA%E5%B1%8F2025-07-09%2017.26.47.png)
+![输入图片说明](figs/11.png)
 - 📈 对比结果：
   - StellarSpeak-13B 在 **20 道题中胜出 10 题**，胜率为 **50%**
   - 在中文逻辑、信息完整性方面表现更优
