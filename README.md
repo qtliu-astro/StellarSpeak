@@ -295,9 +295,9 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 
 - 📊 **自动评估指标**：
   - 使用 GPT4o tokenizer 计算 **Perplexity（困惑度）**
-![输入图片说明](figs/13.jpg)
+![输入图片说明](figs/111.jpg)
   - 使用 BLEU 分数评价生成答案的准确性与语言匹配度  
-![输入图片说明](figs/14.jpg)
+![输入图片说明](figs/222.jpg)
 
 | 模型名称           | Perplexity（困惑度） | BLEU 分数 |
 |--------------------|----------------------|------------|
