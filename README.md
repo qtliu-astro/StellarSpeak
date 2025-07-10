@@ -240,28 +240,71 @@ python /home/jovyan/data/alpaca-lora-main/export_hf_checkpoint.py \
 
 ---
 
-### 🔭 天文知识测试 (图片待更新
+### 🔭 天文知识测试
 
-- 📌 测试目标：考察模型对恒星、系外行星、X 射线源等核心天文概念的掌握
-- 📂 数据来源：Astro-QA 数据集 + 人工构造问题
-- ✅ 评估方式：专家人工判分（优/中/差）
-- 🆚 对比结果（与 BayLing-7B）：
+- 📌 **测试目标**：考察模型对恒星、系外行星、X 射线源等核心天文概念的掌握  
+
+  **示例测试样例（JSON 格式）**：
+
+  ```json
+  {
+    "instruction": "从天文学角度出发，请处理以下内容。假设你是一个天文学家，下面我给你一个天文技术与方法方向的问题，请你判断以下陈述是否正确，并给出一个明确的结论与简要解释。",
+    "input": "下面这句话你怎么看？在月球上可以观测到人造卫星现象",
+    "output": "在月球上可以观测到人造卫星现象，这是一种新的观测手段。\n结论：这句话是正确的。\n简要解释：这句话表明，人造卫星在月球上可以被观测到，这是一种新的观测手段。"
+  }
+  ```
+
+- 📂 **数据来源**：Astro-QA 数据集 + 人工构造问题  
+- ✅ **评估方式**：专家人工判分（优 / 中 / 差）  
+- 🆚 **对比结果（与 BayLing-13B）**：
   - StellarSpeak-13B 在术语解释、结构表达方面更清晰；
-  - BayLing-7B 在超长生成上稍具流畅性
-- 📝 结论：
+  - BayLing-13B 在超长生成上稍具流畅性  
+- 📝 **结论**：
   - StellarSpeak 更适用于科研问答场景，专业性强
 
 ---
 
-### 📐 数学基础测试 （图片待更新
+### 📐 数学基础测试（图片待更新）
 
-- 📌 测试内容：代数推导、单位换算、几何分析、公式应用
-- 📂 测试方式：构造 10 道典型题目，格式类比 Vicuna
-- ✅ 表现分析：
+- 📌 **测试内容**：代数推导、单位换算、几何分析、公式应用  
+
+  **示例测试样例（JSON 格式）**：
+
+  ```json
+  {
+    "instruction": "Analyze the user's mathematical question and their attempted solution. Identify any errors or points of confusion, and provide a clear, correct answer with a detailed explanation.",
+    "input": "Why is the volume of a sphere $\\frac{4}{3}\\pi r^3$? I learned that the volume of a sphere is $\\frac{4}{3}\\pi r^3$, but why? The $\\pi$ kind of makes sense because it's round like a circle, and the $r^3$ because it's 3-D, but $\\frac{4}{3}$ is so random! How could somebody guess something like this for the formula?",
+    "output": "The volume of a sphere is given by the formula $\\frac{4}{3}\\pi r^3$, where $r$ is the radius of the sphere.\nThis formula is not guessed but derived mathematically. One common derivation involves integral calculus. Imagine slicing the sphere into infinitesimally thin circular disks along its diameter. The area of each disk is $\\pi r^2$, and the radius of the disk depends on its position along the vertical axis. Integrating these areas over the entire sphere yields the $\\frac{4}{3}\\pi r^3$ volume. The $\\frac{4}{3}$ emerges naturally from the geometry during integration."
+  }
+  ```
+
+- 📂 **测试方式**：构造 10 道典型题目，格式类比 Vicuna  
+- ✅ **表现分析**：
   - StellarSpeak 能准确识别公式、完成单位转换
-  - 输出逻辑清晰，符号规范，优于 BayLing-7B
-- 📝 结论：
+  - 输出逻辑清晰，符号规范，优于 BayLing-13B  
+- 📝 **结论**：
   - 微调显著增强模型对“格式化输出”与“数学表达”的掌控
+
+---
+
+### 🧪 困惑度、BLEU 指标评估
+
+- 📦 **测试设计**：将天文与数学问题融合构建统一评估集，包含 40 道真实任务，涵盖：
+  - 🌌 天文概念理解（如恒星光谱型、轨道力学）
+  - 📐 数学推理能力（如公式推导、单位转换）
+
+- 📊 **自动评估指标**：
+  - 使用 GPT4o tokenizer 计算 **Perplexity（困惑度）**
+![输入图片说明](figs/13.jpg)
+  - 使用 BLEU 分数评价生成答案的准确性与语言匹配度  
+![输入图片说明](figs/14.jpg)
+
+| 模型名称           | Perplexity（困惑度） | BLEU 分数 |
+|--------------------|----------------------|------------|
+| **StellarSpeak-13B** | **21.85**             | 24.83      |
+| **BayLing-13B**      | 54.64                | **35.92**  |
+
+> 🔍 **结论分析**：StellarSpeak 的困惑度显著低于 BayLing，说明其语言理解更稳定、生成更聚焦；尽管 BayLing 的 BLEU 得分略高，但主要体现在表面语言相似度，缺乏专业术语的精确性和推理结构的完整性。综合而言，**StellarSpeak 更胜一筹，尤其适用于科研问答与教学场景。**
 
 --- 
 
